@@ -1,8 +1,9 @@
-### Steps to use this application
+### Steps to install application
 
 * Clone the repository
 * `composer install`
 * Update Alexa App ID in `config/alexa.php`
+* Migrate database
 * Create user using signup
 * Login with newly created user credentials
 * Go to OAuth2 Dashboard
@@ -11,7 +12,7 @@
     - From account linking section, copy one **Redirect URL (3rd URL)**
     - In laravel application create new client using copied redirect URL
 * Create your intents in Alexa Skill on Amazon developer site
-* For linking your account with application
+* For linking your account with application, so you can securely access your API
     - Make your laravel application publicly accessible
     - If you are using valet on MAC then you can use `valet share` and copy url with `https`
     - If you are using Linux or windows then you can use the tools called **ngrock** for the same
