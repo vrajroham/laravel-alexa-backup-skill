@@ -80,10 +80,16 @@ class AlexaController extends Controller
          * You can treat slots as variables passed by Alexa to Laravel application.
          */
         if (Alexa::slot('what') != null) {
-
             //Backup task goes here
-
-            return Alexa::say("You asked for the backup of ".Alexa::slot('what'));
+            if (Alexa::slot('what') == "database") {
+                $exitCode = Artisan::call('backup:run',['--only-db' => true]);
+                if ($exitCode == 0) {
+                    return Alexa::say("Backup successful. Notification is on the way.");
+                }
+                else{
+                    return Alexa::say("There was a problem in taking backup.");
+                }                
+            }
         }else{
             /**
              * If user didn't provide the option i.e. code/database/both for backup then,
